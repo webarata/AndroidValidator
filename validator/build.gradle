@@ -31,13 +31,29 @@ dependencies {
 
 apply plugin: "maven"
 
+def repo = new File(rootDir, "build/repository")
+
 uploadArchives {
     repositories {
         mavenDeployer {
-            repository url: 'build/repository'
+            repository url: "file://${repo.absolutePath}"
             pom.version = '0.1.0'
-            pom.groupId = 'link.arata.android.base'
-            pom.artifactId = 'base'
+            pom.groupId = 'link.arata.android.common'
+            pom.artifactId = 'validator'
+        }
+    }
+}
+
+// http://vividcode.hatenablog.com/entry/howto/publish-aar-package-to-maven-central-with-gradle
+android.libraryVariants.all { variant ->
+    if (variant.name == 'release') {
+        task("sourcesJar${variant.name.capitalize()}", type: Jar) {
+            classifier = "sources"
+            from variant.javaCompile.source
+        }
+
+        artifacts {
+            archives tasks["sourcesJar${variant.name.capitalize()}"]
         }
     }
 }
