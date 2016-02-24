@@ -18,27 +18,23 @@ public class RequiredValidator implements Validator {
      */
     public static TrimType DEFAULT_TRIM_TYPE = TrimType.RIGHT;
 
-    private static final int  DEFAULT_MESSAGE_ID = R.string.validator_required;
+    private static final int DEFAULT_MESSAGE_ID = R.string.validator_required;
 
     private TrimType trimType;
-    private Context context;
 
     /**
      * デフォルトのtrimを行うコンストラクタ
-     * @param context コンテキスト
      */
-    public RequiredValidator(@NonNull Context context) {
-        this(context, DEFAULT_TRIM_TYPE);
+    public RequiredValidator() {
+        this(DEFAULT_TRIM_TYPE);
     }
 
     /**
      * 指定したtrimを行うコンストラクタ
      *
-     * @param context コンテキスト
      * @param trimType 必須のチェックの前に行うtrim
      */
-    public RequiredValidator(@NonNull Context context, @NonNull TrimType trimType) {
-        this.context = context;
+    public RequiredValidator(@NonNull TrimType trimType) {
         this.trimType = trimType;
     }
 
@@ -46,12 +42,13 @@ public class RequiredValidator implements Validator {
      * 空文字華道家のチェック。<br>
      * デフォルトか、コンストラクタで指定したtrimをした後にチェックされる
      *
-     * @param value バリデーション対象の文字列
+     * @param context コンテキスト
+     * @param value   バリデーション対象の文字列
      * @return 空文字の場合false
      */
     @Nullable
     @Override
-    public String validate(@NonNull String value) {
+    public String validate(@NonNull Context context, @NonNull String value) {
 
         if (ValidationUtil.required(value, trimType)) {
             return null;
