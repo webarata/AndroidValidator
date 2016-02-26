@@ -1,2 +1,4 @@
-<manifest package="link.arata.android.common.validator">
+<manifest
+ xmlns:android="http://schemas.android.com/apk/res/android"
+ package="link.arata.android.common.validator">
 </manifest>
