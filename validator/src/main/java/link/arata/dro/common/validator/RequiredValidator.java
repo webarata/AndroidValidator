@@ -16,11 +16,19 @@ public class RequiredValidator implements Validator {
     /**
      * デフォルトのTrimType
      */
-    public static TrimType DEFAULT_TRIM_TYPE = TrimType.RIGHT;
+    private static TrimType DEFAULT_TRIM_TYPE = TrimType.RIGHT;
 
     private static final int DEFAULT_MESSAGE_ID = R.string.validator_required;
 
     private TrimType trimType;
+
+    /**
+     * デフォルトのTrimTypeを変更する
+     * @param trimType TrimType
+     */
+    public static void setTrimType(TrimType trimType) {
+        DEFAULT_TRIM_TYPE = trimType;
+    }
 
     /**
      * デフォルトのtrimを行うコンストラクタ
@@ -49,7 +57,6 @@ public class RequiredValidator implements Validator {
     @Nullable
     @Override
     public String validate(@NonNull Context context, @NonNull String value) {
-
         if (ValidationUtil.required(value, trimType)) {
             return null;
         }

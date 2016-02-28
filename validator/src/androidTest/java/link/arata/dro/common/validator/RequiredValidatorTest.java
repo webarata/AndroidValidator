@@ -16,6 +16,8 @@ import static org.junit.Assert.assertThat;
 public class RequiredValidatorTest {
     private Context context;
 
+    private static final int VALIDATOR_MESSAGE_ID = R.string.validator_required;
+
     @Before
     public void setUp() throws Exception {
         context = InstrumentationRegistry.getContext();
@@ -30,6 +32,6 @@ public class RequiredValidatorTest {
     @Test
     public void requiredValidatorで空文字の場合() {
         Validator validator = new RequiredValidator();
-        assertThat(validator.validate(context, ""), is(context.getString(R.string.validator_required)));
+        assertThat(validator.validate(context, ""), is(context.getString(VALIDATOR_MESSAGE_ID)));
     }
 }
