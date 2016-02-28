@@ -1,4 +1,3 @@
 <manifest
- xmlns:android="http://schemas.android.com/apk/res/android"
- package="link.arata.android.common.validator">
+ package="link.arata.mobile.common.validator">
 </manifest>
