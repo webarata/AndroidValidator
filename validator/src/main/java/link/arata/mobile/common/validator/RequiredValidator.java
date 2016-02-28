@@ -1,4 +1,4 @@
-package link.arata.android.common.validator;
+package link.arata.mobile.common.validator;
 
 import android.content.Context;
 import android.support.annotation.NonNull;
