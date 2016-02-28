@@ -1,4 +1,4 @@
-package link.arata.mobile.common.validator;
+package link.arata.dro.common.validator;
 
 import android.support.test.runner.AndroidJUnit4;
 
