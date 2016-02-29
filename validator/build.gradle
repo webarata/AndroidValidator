@@ -42,7 +42,7 @@ uploadArchives {
     repositories {
         mavenDeployer {
             repository url: "file://${repo.absolutePath}"
-            pom.version = '0.1.1'
+            pom.version = '0.1.2'
             pom.groupId = 'link.arata.android.common'
             pom.artifactId = 'validator'
         }
