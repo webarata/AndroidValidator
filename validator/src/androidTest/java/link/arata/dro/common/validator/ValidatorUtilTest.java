@@ -30,22 +30,25 @@ public class ValidatorUtilTest {
 
     @Test
     public void requiredValidatorでtestの場合() {
-        Validator validator = new RequiredValidator(ValidationHelper.getInstance(TrimType.RIGHT, LineBreakType.LF));
-        assertThat(ValidatorUtil.validate(context, "test", validator), is(nullValue()));
+        Validator validator = new RequiredValidator();
+        ValidationHelper validationHelper = ValidationHelper.getInstance(TrimType.RIGHT, LineBreakType.LF);
+        assertThat(ValidatorUtil.validate(context, validationHelper, "test", validator), is(nullValue()));
     }
 
     @Test
     public void requiredValidatorで空文字の場合() {
-        Validator validator = new RequiredValidator(ValidationHelper.getInstance(TrimType.RIGHT, LineBreakType.LF));
-        assertThat(ValidatorUtil.validate(context, "", validator), is(context.getString(VALIDATOR_MESSAGE_ID)));
+        Validator validator = new RequiredValidator();
+        ValidationHelper validationHelper = ValidationHelper.getInstance(TrimType.RIGHT, LineBreakType.LF);
+        assertThat(ValidatorUtil.validate(context, validationHelper, "",  validator), is(context.getString(VALIDATOR_MESSAGE_ID)));
     }
 
     @Test
     public void validatorTextViewでtestの場合() {
         TextView textView = new TextView(context);
         textView.setText("test");
-        Validator validator = new RequiredValidator(ValidationHelper.getInstance(TrimType.RIGHT, LineBreakType.LF));
-        assertThat(ValidatorUtil.validateEditText(context, textView, validator), is(true));
+        Validator validator = new RequiredValidator();
+        ValidationHelper validationHelper = ValidationHelper.getInstance(TrimType.RIGHT, LineBreakType.LF);
+        assertThat(ValidatorUtil.validateEditText(context, validationHelper, textView, validator), is(true));
         assertThat(textView.getError(), is(nullValue()));
     }
 
@@ -53,8 +56,9 @@ public class ValidatorUtilTest {
     public void validatorTextViewで空文字の場合() {
         TextView textView = new TextView(context);
         textView.setText("");
-        Validator validator = new RequiredValidator(ValidationHelper.getInstance(TrimType.RIGHT, LineBreakType.LF));
-        assertThat(ValidatorUtil.validateEditText(context, textView, validator), is(false));
+        Validator validator = new RequiredValidator();
+        ValidationHelper validationHelper = ValidationHelper.getInstance(TrimType.RIGHT, LineBreakType.LF);
+        assertThat(ValidatorUtil.validateEditText(context, validationHelper, textView, validator), is(false));
         assertThat(textView.getError().toString(), is(context.getString(VALIDATOR_MESSAGE_ID)));
     }
 }
