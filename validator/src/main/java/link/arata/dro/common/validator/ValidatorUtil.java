@@ -3,6 +3,7 @@ package link.arata.dro.common.validator;
 import android.content.Context;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
+import android.widget.TextView;
 
 /**
  * Validatorを使うためのユーティリティ
@@ -30,5 +31,23 @@ public abstract class ValidatorUtil {
             }
         }
         return message;
+    }
+
+    /**
+     * EditTextのValidationをする。<br>
+     * エラーが有った場合にはEditTextにエラーをセットし、falseを返す。
+     *
+     * @param context    コンテキスト
+     * @param textView   検査するTextView
+     * @param validators EditTextを検査するValidator
+     * @return エラーの場合false
+     */
+    public static boolean validateEditText(@NonNull Context context, @NonNull TextView textView, @NonNull Validator... validators) {
+        String message = validate(context, textView.getText().toString(), validators);
+        if (message == null) {
+            return true;
+        }
+        textView.setError(message);
+        return false;
     }
 }

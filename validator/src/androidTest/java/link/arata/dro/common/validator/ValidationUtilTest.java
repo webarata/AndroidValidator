@@ -3,6 +3,8 @@ package link.arata.dro.common.validator;
 import android.content.Context;
 import android.support.test.InstrumentationRegistry;
 import android.support.test.runner.AndroidJUnit4;
+import android.widget.EditText;
+import android.widget.TextView;
 
 import org.junit.Before;
 import org.junit.Test;
@@ -33,5 +35,21 @@ public class ValidationUtilTest {
     public void requiredValidatorで空文字の場合() {
         Validator validator = new RequiredValidator();
         assertThat(ValidatorUtil.validate(context, "", validator), is(context.getString(VALIDATOR_MESSAGE_ID)));
+    }
+
+    @Test
+    public void validatorTextViewでtestの場合() {
+        TextView textView = new TextView(context);
+        textView.setText("test");
+        assertThat(ValidatorUtil.validateEditText(context, textView, new RequiredValidator()), is(true));
+        assertThat(textView.getError(), is(nullValue()));
+    }
+
+    @Test
+    public void validatorTextViewで空文字の場合() {
+        TextView textView = new TextView(context);
+        textView.setText("");
+        assertThat(ValidatorUtil.validateEditText(context, textView, new RequiredValidator()), is(false));
+        assertThat(textView.getError().toString(), is(context.getString(VALIDATOR_MESSAGE_ID)));
     }
 }
