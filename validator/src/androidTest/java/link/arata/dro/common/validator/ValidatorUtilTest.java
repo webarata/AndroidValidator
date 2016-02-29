@@ -18,7 +18,7 @@ import static org.hamcrest.CoreMatchers.nullValue;
 import static org.junit.Assert.assertThat;
 
 @RunWith(AndroidJUnit4.class)
-public class ValidationUtilTest {
+public class ValidatorUtilTest {
     private Context context;
 
     private static final int VALIDATOR_MESSAGE_ID = R.string.validator_required;
