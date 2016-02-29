@@ -17,25 +17,17 @@ public class RequiredValidator implements Validator {
     private ValidationHelper validationHelper;
 
     /**
-     * 指定したhelperを用いるコンストラクタ
-     *
-     * @param validationHelper 必須のチェックに使用されるhelper
-     */
-    public RequiredValidator(@NonNull ValidationHelper validationHelper) {
-        this.validationHelper = validationHelper;
-    }
-
-    /**
      * 空文字華道家のチェック。<br>
      * デフォルトか、コンストラクタで指定したtrimをした後にチェックされる
      *
-     * @param context コンテキスト
-     * @param value   バリデーション対象の文字列
+     * @param context          コンテキスト
+     * @param validationHelper 必須のチェックに使用されるhelper
+     * @param value            バリデーション対象の文字列
      * @return 空文字の場合false
      */
     @Nullable
     @Override
-    public String validate(@NonNull Context context, @NonNull String value) {
+    public String validate(@NonNull Context context, @NonNull ValidationHelper validationHelper, @NonNull String value) {
         if (validationHelper.required(value)) {
             return null;
         }

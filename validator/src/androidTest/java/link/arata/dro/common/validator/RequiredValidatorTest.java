@@ -29,25 +29,29 @@ public class RequiredValidatorTest {
 
     @Test
     public void requiredValidatorでtestの場合() {
-        Validator validator = new RequiredValidator(ValidationHelper.getInstance(TrimType.RIGHT, LineBreakType.LF));
-        assertThat(validator.validate(context, "test"), is(nullValue()));
+        ValidationHelper validationHelper = ValidationHelper.getInstance(TrimType.RIGHT, LineBreakType.LF);
+        Validator validator = new RequiredValidator();
+        assertThat(validator.validate(context, validationHelper, "test"), is(nullValue()));
     }
 
     @Test
     public void requiredValidatorで空文字の場合() {
-        Validator validator = new RequiredValidator(ValidationHelper.getInstance(TrimType.RIGHT, LineBreakType.LF));
-        assertThat(validator.validate(context, ""), is(context.getString(VALIDATOR_MESSAGE_ID)));
+        ValidationHelper validationHelper = ValidationHelper.getInstance(TrimType.RIGHT, LineBreakType.LF);
+        Validator validator = new RequiredValidator();
+        assertThat(validator.validate(context, validationHelper, ""), is(context.getString(VALIDATOR_MESSAGE_ID)));
     }
 
     @Test
     public void requiredValidatorで空白文字の場合() {
-        Validator validator = new RequiredValidator(ValidationHelper.getInstance(TrimType.RIGHT, LineBreakType.LF));
-        assertThat(validator.validate(context, " \r\n\t"), is(context.getString(VALIDATOR_MESSAGE_ID)));
+        ValidationHelper validationHelper = ValidationHelper.getInstance(TrimType.RIGHT, LineBreakType.LF);
+        Validator validator = new RequiredValidator();
+        assertThat(validator.validate(context, validationHelper, " \r\n\t"), is(context.getString(VALIDATOR_MESSAGE_ID)));
     }
 
     @Test
     public void requiredValidatorでtrimをNONEにして空白文字の場合() {
-        Validator validator = new RequiredValidator(ValidationHelper.getInstance(TrimType.NONE, LineBreakType.LF));
-        assertThat(validator.validate(context, " \r\n\t"), is(nullValue()));
+        ValidationHelper validationHelper = ValidationHelper.getInstance(TrimType.NONE, LineBreakType.LF);
+        Validator validator = new RequiredValidator();
+        assertThat(validator.validate(context, validationHelper, " \r\n\t"), is(nullValue()));
     }
 }
