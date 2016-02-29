@@ -13,7 +13,7 @@ import static org.hamcrest.CoreMatchers.nullValue;
 import static org.junit.Assert.assertThat;
 
 @RunWith(AndroidJUnit4.class)
-public class RequiredValidatorTest {
+public class ValidationUtilTest {
     private Context context;
 
     private static final int VALIDATOR_MESSAGE_ID = R.string.validator_required;
@@ -26,18 +26,12 @@ public class RequiredValidatorTest {
     @Test
     public void requiredValidatorでtestの場合() {
         Validator validator = new RequiredValidator();
-        assertThat(validator.validate(context, "test"), is(nullValue()));
+        assertThat(ValidatorUtil.validate(context, "test", validator), is(nullValue()));
     }
 
     @Test
     public void requiredValidatorで空文字の場合() {
         Validator validator = new RequiredValidator();
-        assertThat(validator.validate(context, ""), is(context.getString(VALIDATOR_MESSAGE_ID)));
-    }
-
-    @Test
-    public void requiredValidatorで空白文字の場合() {
-        Validator validator = new RequiredValidator();
-        assertThat(validator.validate(context, " \r\n\t"), is(context.getString(VALIDATOR_MESSAGE_ID)));
+        assertThat(ValidatorUtil.validate(context, "", validator), is(context.getString(VALIDATOR_MESSAGE_ID)));
     }
 }
