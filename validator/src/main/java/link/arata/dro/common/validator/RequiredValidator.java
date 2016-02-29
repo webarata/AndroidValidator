@@ -4,8 +4,7 @@ import android.content.Context;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 
-import link.arata.common.util.TrimType;
-import link.arata.common.util.ValidationUtil;
+import link.arata.common.helper.ValidationHelper;
 
 /***
  * 必須Validator
@@ -13,37 +12,17 @@ import link.arata.common.util.ValidationUtil;
  * @author arata
  */
 public class RequiredValidator implements Validator {
-    /**
-     * デフォルトのTrimType
-     */
-    private static TrimType DEFAULT_TRIM_TYPE = TrimType.RIGHT;
-
     private static final int DEFAULT_MESSAGE_ID = R.string.validator_required;
 
-    private TrimType trimType;
+    private ValidationHelper validationHelper;
 
     /**
-     * デフォルトのTrimTypeを変更する
-     * @param trimType TrimType
-     */
-    public static void setTrimType(TrimType trimType) {
-        DEFAULT_TRIM_TYPE = trimType;
-    }
-
-    /**
-     * デフォルトのtrimを行うコンストラクタ
-     */
-    public RequiredValidator() {
-        this(DEFAULT_TRIM_TYPE);
-    }
-
-    /**
-     * 指定したtrimを行うコンストラクタ
+     * 指定したhelperを用いるコンストラクタ
      *
-     * @param trimType 必須のチェックの前に行うtrim
+     * @param validationHelper 必須のチェックに使用されるhelper
      */
-    public RequiredValidator(@NonNull TrimType trimType) {
-        this.trimType = trimType;
+    public RequiredValidator(@NonNull ValidationHelper validationHelper) {
+        this.validationHelper = validationHelper;
     }
 
     /**
@@ -57,7 +36,7 @@ public class RequiredValidator implements Validator {
     @Nullable
     @Override
     public String validate(@NonNull Context context, @NonNull String value) {
-        if (ValidationUtil.required(value, trimType)) {
+        if (validationHelper.required(value)) {
             return null;
         }
         return context.getText(DEFAULT_MESSAGE_ID).toString();

@@ -9,6 +9,10 @@ import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 
+import link.arata.common.enums.LineBreakType;
+import link.arata.common.enums.TrimType;
+import link.arata.common.helper.ValidationHelper;
+
 import static org.hamcrest.CoreMatchers.is;
 import static org.hamcrest.CoreMatchers.nullValue;
 import static org.junit.Assert.assertThat;
@@ -26,13 +30,13 @@ public class ValidationUtilTest {
 
     @Test
     public void requiredValidatorでtestの場合() {
-        Validator validator = new RequiredValidator();
+        Validator validator = new RequiredValidator(ValidationHelper.getInstance(TrimType.RIGHT, LineBreakType.LF));
         assertThat(ValidatorUtil.validate(context, "test", validator), is(nullValue()));
     }
 
     @Test
     public void requiredValidatorで空文字の場合() {
-        Validator validator = new RequiredValidator();
+        Validator validator = new RequiredValidator(ValidationHelper.getInstance(TrimType.RIGHT, LineBreakType.LF));
         assertThat(ValidatorUtil.validate(context, "", validator), is(context.getString(VALIDATOR_MESSAGE_ID)));
     }
 
@@ -40,7 +44,8 @@ public class ValidationUtilTest {
     public void validatorTextViewでtestの場合() {
         TextView textView = new TextView(context);
         textView.setText("test");
-        assertThat(ValidatorUtil.validateEditText(context, textView, new RequiredValidator()), is(true));
+        Validator validator = new RequiredValidator(ValidationHelper.getInstance(TrimType.RIGHT, LineBreakType.LF));
+        assertThat(ValidatorUtil.validateEditText(context, textView, validator), is(true));
         assertThat(textView.getError(), is(nullValue()));
     }
 
@@ -48,7 +53,8 @@ public class ValidationUtilTest {
     public void validatorTextViewで空文字の場合() {
         TextView textView = new TextView(context);
         textView.setText("");
-        assertThat(ValidatorUtil.validateEditText(context, textView, new RequiredValidator()), is(false));
+        Validator validator = new RequiredValidator(ValidationHelper.getInstance(TrimType.RIGHT, LineBreakType.LF));
+        assertThat(ValidatorUtil.validateEditText(context, textView, validator), is(false));
         assertThat(textView.getError().toString(), is(context.getString(VALIDATOR_MESSAGE_ID)));
     }
 }
