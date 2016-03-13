@@ -1,1 +1,3 @@
 # AndroidValidator
+
+Android用のValidatorライブラリーです。
