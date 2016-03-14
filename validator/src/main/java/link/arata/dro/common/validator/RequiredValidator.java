@@ -14,8 +14,6 @@ import link.arata.common.helper.ValidationHelper;
 public class RequiredValidator implements Validator {
     private static final int DEFAULT_MESSAGE_ID = R.string.validator_required;
 
-    private ValidationHelper validationHelper;
-
     /**
      * 空文字華道家のチェック。<br>
      * デフォルトか、コンストラクタで指定したtrimをした後にチェックされる
