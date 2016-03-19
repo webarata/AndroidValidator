@@ -56,4 +56,11 @@ public class EmKatakanaValidatorTest {
         Validator validator = new EmKatakanaValidator(UseEmBlank.ALLOW, UseLineBreak.DISALLOW);
         assertThat(validator.validate(context, validationHelper, "アイウエ　オ"), is(nullValue()));
     }
+
+    @Test
+    public void EmKatakanaValidatorでアイウエ改行オで改行を許可の場合() {
+        ValidationHelper validationHelper = ValidationHelper.getInstance(TrimType.RIGHT, LineBreakType.LF);
+        Validator validator = new EmKatakanaValidator(UseEmBlank.DISALLOW, UseLineBreak.ALLOW);
+        assertThat(validator.validate(context, validationHelper, "アイウエ\r\nオ"), is(nullValue()));
+    }
 }
