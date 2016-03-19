@@ -4,6 +4,8 @@ import android.content.Context;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 
+import link.arata.common.enums.UseEmBlank;
+import link.arata.common.enums.UseLineBreak;
 import link.arata.common.helper.ValidationHelper;
 
 /***
@@ -12,23 +14,21 @@ import link.arata.common.helper.ValidationHelper;
  * @author arata
  */
 public class EmKatakanaValidator implements Validator {
-    private static final int DEFAULT_MESSAGE_ID = R.string.validator_required;
+    private static final int DEFAULT_MESSAGE_ID = R.string.validator_emKatakana;
 
     /** 全角ブランクを許可するか */
-    private boolean allowEmBlank;
+    private UseEmBlank useEmBlank;
     /** 改行を許可するか */
-    private boolean allowBreakLine;
+    private UseLineBreak useLineBreak;
 
     /**
      * コンストラクタ
+     * @param useEmBlank 全角ブランクも許可する
+     * @param useLineBreak 改行も許可する
      */
-    public EmKatakanaValidator() {
-        this(false, false);
-    }
-
-    public EmKatakanaValidator(boolean allowEmBlank, boolean allowBreakLine) {
-        this.allowEmBlank = allowEmBlank;
-        this.allowBreakLine = allowBreakLine;
+    public EmKatakanaValidator(UseEmBlank useEmBlank, UseLineBreak useLineBreak) {
+        this.useEmBlank = useEmBlank;
+        this.useLineBreak = useLineBreak;
     }
 
     /**
@@ -38,12 +38,12 @@ public class EmKatakanaValidator implements Validator {
      * @param context          コンテキスト
      * @param validationHelper 必須のチェックに使用されるhelper
      * @param value            バリデーション対象の文字列
-     * @return 空文字の場合false
+     * @return エラーがない場合nullを返し、エラーが有る場合にはエラーメッセージを返す
      */
     @Nullable
     @Override
     public String validate(@NonNull Context context, @NonNull ValidationHelper validationHelper, @NonNull String value) {
-        if (validationHelper.required(value)) {
+        if (validationHelper.isEmKatakana(value, useEmBlank, useLineBreak)) {
             return null;
         }
         return context.getText(DEFAULT_MESSAGE_ID).toString();

@@ -1,3 +1,4 @@
 <resources>
  <string name="validator_required">入力してください</string>
+ <string name="validator_emKatakana">全角カタカナで入力してください</string>
 </resources>

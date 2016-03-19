@@ -31,7 +31,7 @@ dependencies {
     compile fileTree(dir: 'libs', include: ['*.jar'])
     androidTestCompile 'com.android.support.test:testing-support-lib:0.1'
     compile 'com.android.support:appcompat-v7:23.2.0'
-    compile 'link.arata.common:common-util7:0.1.2'
+    compile 'link.arata.common:common-util7:0.1.4'
 }
 
 apply plugin: "maven"
