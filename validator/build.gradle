@@ -1,12 +1,12 @@
 apply plugin: 'com.android.library'
 
 android {
-    compileSdkVersion 23
-    buildToolsVersion "23.0.1"
+    compileSdkVersion 25
+    buildToolsVersion "25.0.0"
 
     defaultConfig {
-        minSdkVersion 16
-        targetSdkVersion 23
+        minSdkVersion 19
+        targetSdkVersion 25
         versionCode 1
         versionName "1.0"
 
@@ -21,17 +21,27 @@ android {
             testCoverageEnabled true
         }
     }
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_7
+        targetCompatibility JavaVersion.VERSION_1_7
+    }
 }
 
 repositories {
-    maven { url 'https://raw.githubusercontent.com/webarata/maven/master/repository' }
+    maven { url 'https://raw.githubusercontent.com/webarata3/maven/master/repository' }
 }
 
 dependencies {
     compile fileTree(dir: 'libs', include: ['*.jar'])
-    androidTestCompile 'com.android.support.test:testing-support-lib:0.1'
-    compile 'com.android.support:appcompat-v7:23.2.0'
-    compile 'link.arata.common:common-util7:0.1.4'
+    compile 'com.android.support:appcompat-v7:25.0.0'
+    compile 'link.webarata3.dro.common:dro-common-util7:0.2.4'
+
+    testCompile 'junit:junit:4.12'
+    // Android JUnit Runner
+    androidTestCompile 'com.android.support.test:runner:0.5'
+    // JUnit4 Rules (使わなければ不要)
+    androidTestCompile 'com.android.support.test:rules:0.5'
+    // 古い書き方 androidTestCompile 'com.android.support.test:testing-support-lib:0.1'
 }
 
 apply plugin: "maven"

@@ -9,9 +9,12 @@ import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 
-import link.arata.common.enums.LineBreakType;
-import link.arata.common.enums.TrimType;
-import link.arata.common.helper.ValidationHelper;
+import link.webarata3.common.enums.LineBreakType;
+import link.webarata3.common.enums.TrimType;
+import link.webarata3.common.helper.ValidationHelper;
+import link.webarata3.dro.common.validator.RequiredValidator;
+import link.webarata3.dro.common.validator.Validator;
+import link.webarata3.dro.common.validator.ValidatorUtil;
 
 import static org.hamcrest.CoreMatchers.is;
 import static org.hamcrest.CoreMatchers.nullValue;

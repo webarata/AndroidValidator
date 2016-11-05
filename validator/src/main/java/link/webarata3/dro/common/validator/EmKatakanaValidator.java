@@ -1,12 +1,13 @@
-package link.arata.dro.common.validator;
+package link.webarata3.dro.common.validator;
 
 import android.content.Context;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 
-import link.arata.common.enums.UseEmBlank;
-import link.arata.common.enums.UseLineBreak;
-import link.arata.common.helper.ValidationHelper;
+import link.arata.dro.common.validator.R;
+import link.webarata3.common.enums.UseEmBlank;
+import link.webarata3.common.enums.UseLineBreak;
+import link.webarata3.common.helper.ValidationHelper;
 
 /***
  * 必須Validator

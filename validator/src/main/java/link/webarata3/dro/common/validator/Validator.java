@@ -1,10 +1,11 @@
-package link.arata.dro.common.validator;
+package link.webarata3.dro.common.validator;
 
 import android.content.Context;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 
-import link.arata.common.helper.ValidationHelper;
+import link.webarata3.common.helper.ValidationHelper;
+
 
 /**
  * Validatorインターフェース
