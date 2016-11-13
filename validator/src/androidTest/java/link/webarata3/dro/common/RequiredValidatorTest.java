@@ -1,4 +1,4 @@
-package link.arata.dro.common.validator;
+package link.webarata3.dro.common;
 
 import android.content.Context;
 import android.support.test.InstrumentationRegistry;
@@ -8,11 +8,11 @@ import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 
-import link.webarata3.common.enums.LineBreakType;
-import link.webarata3.common.enums.TrimType;
-import link.webarata3.common.helper.ValidationHelper;
+import link.webarata3.dro.common.enums.LineBreakType;
 import link.webarata3.dro.common.validator.RequiredValidator;
 import link.webarata3.dro.common.validator.Validator;
+import link.webarata3.dro.common.validator.enums.TrimType;
+import link.webarata3.dro.common.validator.helper.ValidationHelper;
 
 import static org.hamcrest.CoreMatchers.is;
 import static org.hamcrest.CoreMatchers.nullValue;
@@ -22,7 +22,7 @@ import static org.junit.Assert.assertThat;
 public class RequiredValidatorTest {
     private Context context;
 
-    private static final int VALIDATOR_MESSAGE_ID = R.string.validator_required;
+    private static final int VALIDATOR_MESSAGE_ID = link.arata.dro.common.validator.R.string.validator_required;
 
     @Before
     public void setUp() throws Exception {
