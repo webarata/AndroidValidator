@@ -2,8 +2,8 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/AndroidValidator.iml" filepath="$PROJECT_DIR$/AndroidValidator.iml" />
-      <module fileurl="file://$PROJECT_DIR$/validator/validator.iml" filepath="$PROJECT_DIR$/validator/validator.iml" />
+      <module fileurl="file://$PROJECT_DIR$/AndroidValidator7.iml" filepath="$PROJECT_DIR$/AndroidValidator7.iml" />
+      <module fileurl="file://$PROJECT_DIR$/validator7/validator7.iml" filepath="$PROJECT_DIR$/validator7/validator7.iml" />
     </modules>
   </component>
 </project>
