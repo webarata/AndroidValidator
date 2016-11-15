@@ -15,7 +15,6 @@ import link.webarata3.dro.common.validator7.helper.ValidationHelper;
 import static org.hamcrest.CoreMatchers.is;
 import static org.hamcrest.CoreMatchers.nullValue;
 import static org.junit.Assert.assertThat;
-import static org.junit.Assert.fail;
 
 @RunWith(AndroidJUnit4.class)
 public class RequiredValidatorTest {
@@ -30,7 +29,6 @@ public class RequiredValidatorTest {
 
     @Test
     public void requiredValidatorでtestの場合() {
-        fail();
         ValidationHelper validationHelper = ValidationHelper.getInstance(TrimType.RIGHT, LineBreakType.LF);
         Validator validator = new RequiredValidator();
         assertThat(validator.validate(context, validationHelper, "test"), is(nullValue()));
