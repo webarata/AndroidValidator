@@ -1,6 +1,7 @@
-package link.webarata3.dro.common.validator.enums;
+package link.webarata3.dro.common.validator7.enums;
 
-import link.webarata3.dro.common.util.StringUtil;
+
+import link.webarata3.dro.common.util7.StringUtil;
 
 /**
  * trimの方向を決めるenum

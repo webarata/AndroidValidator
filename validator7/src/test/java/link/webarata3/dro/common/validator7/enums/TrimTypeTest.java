@@ -1,4 +1,4 @@
-package link.webarata3.dro.common.validator.enums;
+package link.webarata3.dro.common.validator7.enums;
 
 import org.junit.Test;
 

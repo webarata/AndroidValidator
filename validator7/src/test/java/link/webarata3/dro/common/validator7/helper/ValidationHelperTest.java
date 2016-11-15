@@ -1,4 +1,4 @@
-package link.webarata3.dro.common.validator.helper;
+package link.webarata3.dro.common.validator7.helper;
 
 import org.junit.Before;
 import org.junit.experimental.runners.Enclosed;
@@ -7,10 +7,10 @@ import org.junit.experimental.theories.Theories;
 import org.junit.experimental.theories.Theory;
 import org.junit.runner.RunWith;
 
-import link.webarata3.dro.common.enums.LineBreakType;
-import link.webarata3.dro.common.validator.enums.TrimType;
-import link.webarata3.dro.common.validator.enums.UseEmBlank;
-import link.webarata3.dro.common.validator.enums.UseLineBreak;
+import link.webarata3.dro.common.util7.enums.LineBreakType;
+import link.webarata3.dro.common.validator7.enums.TrimType;
+import link.webarata3.dro.common.validator7.enums.UseEmBlank;
+import link.webarata3.dro.common.validator7.enums.UseLineBreak;
 
 import static org.hamcrest.CoreMatchers.is;
 import static org.junit.Assert.assertThat;

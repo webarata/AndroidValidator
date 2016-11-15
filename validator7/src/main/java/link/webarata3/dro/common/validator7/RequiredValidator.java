@@ -1,12 +1,10 @@
-package link.webarata3.dro.common.validator;
+package link.webarata3.dro.common.validator7;
 
 import android.content.Context;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 
-import link.arata.dro.common.validator.R;
-import link.webarata3.dro.common.validator.helper.ValidationHelper;
-
+import link.webarata3.dro.common.validator7.helper.ValidationHelper;
 
 /***
  * 必須Validator

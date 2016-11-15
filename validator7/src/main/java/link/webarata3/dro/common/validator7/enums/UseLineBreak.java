@@ -1,4 +1,4 @@
-package link.webarata3.dro.common.validator.enums;
+package link.webarata3.dro.common.validator7.enums;
 
 /**
  * 改行を使用するか
