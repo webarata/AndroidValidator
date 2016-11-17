@@ -150,5 +150,8 @@ task jacoco(type: JacocoReport) {
 apply plugin: 'com.github.kt3k.coveralls'
 
 coveralls {
-    jacocoReportPath = 'build/reports/jacoco/jacoco/jacoco.xml'
+    jacocoReportPath = [
+        'validator7/build/outputs/androidTest-results/connected/*.xml',
+        'build/reports/jacoco/jacoco/jacoco.xml'
+    ]
 }
