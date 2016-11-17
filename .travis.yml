@@ -37,5 +37,5 @@ before_script:
 script:
   - ./gradlew clean connectedAndroidTest test
 
-#after_success:
-#  - ./gradlew coveralls
+after_success:
+  - ./gradlew jacoco coveralls
