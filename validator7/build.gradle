@@ -138,7 +138,7 @@ task jacoco(type: JacocoReport) {
         html.destination "${buildDir}/reports/jacoco/html"
     }
     classDirectories = fileTree(
-        dir: 'build/intermediates/classes/debug',
+        dir: '${buildDir}/build/intermediates/classes/debug',
         excludes: ['**/R.class',
                    '**/R$*.class',
                    '**/BuildConfig.class'
@@ -150,6 +150,6 @@ task jacoco(type: JacocoReport) {
 apply plugin: 'com.github.kt3k.coveralls'
 
 coveralls {
-    jacocoReportPath = 'build/reports/jacoco/jacoco/jacoco.xml'
-    jacocoReportPath = 'build/reports/coverage/debug/report.xml'
+    jacocoReportPath = '${buildDir}/build/reports/jacoco/jacoco/jacoco.xml'
+    jacocoReportPath = '${buildDir}/build/reports/coverage/debug/report.xml'
 }
