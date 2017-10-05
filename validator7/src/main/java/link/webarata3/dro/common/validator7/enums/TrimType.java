@@ -1,36 +1,43 @@
 package link.webarata3.dro.common.validator7.enums;
 
 
+import android.support.annotation.NonNull;
+
 import link.webarata3.dro.common.util7.StringUtil;
 
 /**
  * trimの方向を決めるenum
  *
  * @author webarata3
- *
  */
 public enum TrimType {
-    NONE, BOTH, LEFT, RIGHT;
+    NONE {
+        @Override
+        public String trim(@NonNull String value) {
+            return value;
+        }
+    }, BOTH {
+        @Override
+        public String trim(@NonNull String value) {
+            return StringUtil.trim(value);
+        }
+    }, LEFT {
+        @Override
+        public String trim(@NonNull String value) {
+            return StringUtil.trimLeft(value);
+        }
+    }, RIGHT {
+        @Override
+        public String trim(@NonNull String value) {
+            return StringUtil.trimRight(value);
+        }
+    };
 
     /**
      * 指定のtrimをかける
      *
-     * @param value
-     *            trim対象の文字列
+     * @param value trim対象の文字列
      * @return trimした文字列
      */
-    public String trim(String value) {
-        switch (this) {
-        case BOTH:
-            return StringUtil.trim(value);
-        case LEFT:
-            return StringUtil.trimLeft(value);
-        case RIGHT:
-            return StringUtil.trimRight(value);
-        case NONE:
-            return value;
-        default:
-            return value;
-        }
-    }
+    public abstract String trim(@NonNull String value);
 }
