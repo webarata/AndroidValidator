@@ -109,17 +109,6 @@ task findbugs(type: FindBugs) {
     }
 }
 
-//task findbugsConvertUtf8 << {
-//    def filename="${project.rootDir}/build/reports/findbugs/main.html"
-//    def file = new File(filename)
-//    def text = file.getText()
-//    text = text.replaceAll(/<head>/, "<head>\n<meta http-equiv='Content-Type' content='text/html; charset=UTF-8'>")
-//
-//    def fw=new File(filename).newWriter()
-//    fw.writeLine(text)
-//    fw.close()
-//}
-
 // JaCoCo
 // task test jacocoTestReport
 apply plugin: 'jacoco'
