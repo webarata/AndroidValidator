@@ -26,11 +26,6 @@ install:
   - android-update-sdk --accept-licenses='android-sdk-license-.+' --components=extra-google-m2repository
 
 before_script:
-  - export ANDROID_HOME=/usr/local/android-sdk
-  - echo $ANDROID_HOME > local.properties
-  - mkdir -p /usr/local/android-sdk/licenses
-  - touch /usr/local/android-sdk/licenses/android-sdk-license
-  - echo "8933bad161af4178b1185d1a37fbf41ea5269c55" > /usr/local/android-sdk/licenses/android-sdk-license
   - echo no | android create avd --force -n test -t android-19 --abi armeabi-v7a
   - emulator -avd test -no-skin -no-audio -no-window &
   - android-wait-for-emulator
