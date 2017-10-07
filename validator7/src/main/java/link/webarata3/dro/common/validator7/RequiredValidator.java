@@ -29,6 +29,6 @@ public class RequiredValidator implements Validator {
         if (validationHelper.required(value)) {
             return null;
         }
-        return context.getText(DEFAULT_MESSAGE_ID).toString();
+        return context.getString(DEFAULT_MESSAGE_ID);
     }
 }

@@ -27,14 +27,13 @@ public abstract class ValidatorUtil {
     @Nullable
     public static String validate(@NonNull Context context, @NonNull ValidationHelper validationHelper,
                                   @NonNull String value, @NonNull Validator... validators) {
-        String message = null;
         for (Validator validator : validators) {
-            message = validator.validate(context, validationHelper, value);
+            String message = validator.validate(context, validationHelper, value);
             if (message != null) {
-                break;
+                return message;
             }
         }
-        return message;
+        return null;
     }
 
     /**

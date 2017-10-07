@@ -46,6 +46,6 @@ public class EmKatakanaValidator implements Validator {
         if (validationHelper.isEmKatakana(value, useEmBlank, useLineBreak)) {
             return null;
         }
-        return context.getText(DEFAULT_MESSAGE_ID).toString();
+        return context.getString(DEFAULT_MESSAGE_ID);
     }
 }
