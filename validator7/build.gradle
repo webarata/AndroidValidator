@@ -95,20 +95,6 @@ android.libraryVariants.all { variant ->
     }
 }
 
-apply plugin: 'findbugs'
-
-task findbugs(type: FindBugs) {
-    ignoreFailures = true
-    effort = "max"
-    reportLevel = "low" // ＊どのレベルの報告まで対応するかで変更＊
-    classes = files("build/intermediates/classes/")
-    source 'src/main'
-    include '**/*.java'
-    reports {
-        xml.enabled = true
-    }
-}
-
 // JaCoCo
 // task test jacocoTestReport
 apply plugin: 'jacoco'
@@ -134,12 +120,24 @@ task jacocoTestReport(type: JacocoReport) {
 
 // FindBugs
 // FindBugs plugin
-// task check
+// task findbugs
 // レポート build/reports/findbugs/main.xml
 apply plugin: 'findbugs'
 
-findbugs {
+task findbugs(type: FindBugs) {
     ignoreFailures = true
+    effort = "max"
+    reportLevel = "low" // ＊どのレベルの報告まで対応するかで変更＊
+    excludeFilter = new File("${project.rootDir}/findbugs_filter.xml")
+    classes = files("${project.rootDir}/validator7/build/intermediates/classes/release/")
+    source 'src/main'
+    include '**/*.java'
+    reports {
+        xml {
+            destination "${project.rootDir}/validator7/build/reports/findbugs_report.xml"
+        }
+    }
+    classpath = files()
 }
 
 // COVERALLS
