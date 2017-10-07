@@ -22,10 +22,12 @@ public class ValidatorUtilTest {
 
     @Test
     public void test() {
-        when(mockContext.getString(R.string.validator_required)).thenReturn("入力してください");
+        final String expectedMessage = "入力してください";
+
+        when(mockContext.getString(R.string.validator_required)).thenReturn(expectedMessage);
 
         Validator validator = new RequiredValidator();
         ValidationHelper validationHelper = ValidationHelper.getInstance(TrimType.RIGHT, LineBreakType.LF);
-        assertThat(ValidatorUtil.validate(mockContext, validationHelper, "", validator), is("入力してください"));
+        assertThat(ValidatorUtil.validate(mockContext, validationHelper, "", validator), is(expectedMessage));
     }
 }
