@@ -27,7 +27,7 @@ install:
   - android-update-sdk --accept-licenses='android-sdk-license-.+' --components=extra-google-m2repository
 
 script:
-  - ./gradlew clean connectedAndroidTest test
+  - ./gradlew clean test
 
 after_success:
   - ./gradlew jacoco coveralls
