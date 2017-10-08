@@ -3,10 +3,11 @@ package link.webarata3.dro.common.validator7;
 import android.content.Context;
 import android.widget.TextView;
 
+import org.junit.Rule;
 import org.junit.Test;
-import org.junit.runner.RunWith;
 import org.mockito.Mock;
-import org.mockito.runners.MockitoJUnitRunner;
+import org.mockito.junit.MockitoJUnit;
+import org.mockito.junit.MockitoRule;
 
 import link.webarata3.dro.common.util7.enums.LineBreakType;
 import link.webarata3.dro.common.validator7.enums.TrimType;
@@ -17,8 +18,10 @@ import static org.hamcrest.CoreMatchers.nullValue;
 import static org.junit.Assert.assertThat;
 import static org.mockito.Mockito.when;
 
-@RunWith(MockitoJUnitRunner.class)
 public class ValidatorUtilTest {
+    @Rule
+    public MockitoRule mockito = MockitoJUnit.rule();
+
     @Mock
     private Context mockContext;
 
