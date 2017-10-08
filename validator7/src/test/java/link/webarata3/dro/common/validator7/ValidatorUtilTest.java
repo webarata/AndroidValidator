@@ -5,6 +5,7 @@ import android.widget.TextView;
 
 import org.junit.Rule;
 import org.junit.Test;
+import org.mockito.ArgumentCaptor;
 import org.mockito.Mock;
 import org.mockito.junit.MockitoJUnit;
 import org.mockito.junit.MockitoRule;
@@ -16,6 +17,7 @@ import link.webarata3.dro.common.validator7.helper.ValidationHelper;
 import static org.hamcrest.CoreMatchers.is;
 import static org.hamcrest.CoreMatchers.nullValue;
 import static org.junit.Assert.assertThat;
+import static org.mockito.Mockito.doNothing;
 import static org.mockito.Mockito.when;
 
 public class ValidatorUtilTest {
@@ -61,11 +63,16 @@ public class ValidatorUtilTest {
         when(mockContext.getString(R.string.validator_required)).thenReturn(expectedMessage);
 
         when(mockTextView.getText()).thenReturn("");
-        when(mockTextView.getError()).thenReturn(expectedMessage);
+
+        ArgumentCaptor<String> stringCaptor = ArgumentCaptor.forClass(String.class);
+        doNothing().when(mockTextView).setError(stringCaptor.capture());
 
         Validator validator = new RequiredValidator();
         ValidationHelper validationHelper = ValidationHelper.getInstance(TrimType.RIGHT, LineBreakType.LF);
+
         assertThat(ValidatorUtil.validateEditText(mockContext, validationHelper, mockTextView, validator), is(false));
-        assertThat(mockTextView.getError().toString(), is(expectedMessage));
+
+        // setErrorでセットされた値をチェック
+        assertThat(stringCaptor.getValue(), is(expectedMessage));
     }
 }
